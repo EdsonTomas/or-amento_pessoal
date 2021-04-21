@@ -7,9 +7,13 @@ class Despesa{
         this.descricao = descricao;
         this.valor = valor
     }
+    validarDados(){
+        for (let i in this) {
+            console.log(i)
+        }
+    }
 }
-
-    class Bd{
+class Bd{
        constructor(){
            let id = localStorage.getItem('id');
            if(id === null){
@@ -26,7 +30,6 @@ class Despesa{
            localStorage.setItem('id',id);
        }
     }
-
 function cadastrarDespesas(){
     let ano         = document.getElementById('ano');
     let mes         = document.getElementById('mes');
@@ -37,5 +40,11 @@ function cadastrarDespesas(){
     
     let despesa = new Despesa(ano.value, mes.value, dia.value,tipo.value, descricao.value,valor.value);
     let bd = new Bd();
-    bd.gravar(despesa);
-}
+    
+    if(despesa.validarDados()){
+        //bd.gravar(despesa);
+    }else{
+        //dialog de erro
+    }
+    
+   }

@@ -9,8 +9,12 @@ class Despesa{
     }
     validarDados(){
         for (let i in this) {
-            console.log(i)
+            console.log(this[i]);
+           if(this[i] == '' || this[i] == undefined || this[i] == null ){
+               return false;
+           }
         }
+        return true;
     }
 }
 class Bd{
@@ -42,9 +46,9 @@ function cadastrarDespesas(){
     let bd = new Bd();
     
     if(despesa.validarDados()){
-        //bd.gravar(despesa);
+        console.log('dados validos');
     }else{
-        //dialog de erro
+       console.log('dados ivalidos');
     }
     
    }

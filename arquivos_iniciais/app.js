@@ -58,7 +58,7 @@ function cadastrarDespesas(){
         $('#modalRegistro').modal('show')       
         //bd.gravar(despesa);
     }else{
-        registroModal('text-danger','Erro na gravação!','Existem caompos obrigatórios que não foram preenchidos','btn-danger');
+        registroModal('text-danger','Erro na gravação!','Existem campos obrigatórios que não foram preenchidos','btn-danger');
         document.getElementById('btn-modal').innerHTML = 'Voltar e corrigir'
         $('#modalRegistro').modal('show');
     }

@@ -125,7 +125,6 @@ class Bd{
         let descricao= document.getElementById('descricao').value;
         let valor= document.getElementById('valor').value;
 
-
         let despesa = new Despesa(ano,mes,dia,tipo,descricao,valor);
 
         console.log(despesa);

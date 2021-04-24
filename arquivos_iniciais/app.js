@@ -71,6 +71,10 @@ class Bd{
 
 
     if(despesa.validarDados()){
+        if(document.getElementById('modal-header').classList.contains('text-danger') || document.getElementById('btn-modal').classList.contains('btn-danger')){
+            document.getElementById('modal-header').classList.remove('text-danger');
+            document.getElementById('btn-modal').classList.remove('btn-danger');
+        }
         registroModal('text-success','Registro inserido com sucesso!','Despesa foi cadastrado com sucesso','btn-success');
         document.getElementById('btn-modal').innerHTML = 'Voltar'
         $('#modalRegistro').modal('show')       
@@ -85,5 +89,7 @@ class Bd{
    }
 
    function carregarListaDespesas(){
-       console.log(bd.recuperarTodosRegistros());
+       let despesas = Array();
+       despesas = bd.recuperarTodosRegistros();
+       console.log(despesas);
    }

@@ -95,7 +95,7 @@ class Bd{
        
         despesas.forEach(despesa=>{
             let row = tbody.insertRow(0)
-            row.insertCell(0).innerHTML = `${despesa.dia}-${despesa.mes}-${despesa.ano}`;
+            row.insertCell(0).innerHTML = `${despesa.dia}/${despesa.mes}/${despesa.ano}`;
             switch(despesa.tipo){
                 case '1':
                     despesa.tipo = 'Alimentação';
@@ -115,7 +115,18 @@ class Bd{
             row.insertCell(1).innerHTML = despesa.tipo;
             row.insertCell(2).innerHTML = despesa.descricao;
             row.insertCell(3).innerHTML = despesa.valor;
-            console.log(despesa);
-    
         })
+   }
+   function pesquisarDespesas(){
+        let ano = document.getElementById('ano').value;
+        let mes = document.getElementById('mes').value;
+        let dia = document.getElementById('dia').value;
+        let tipo= document.getElementById('tipo').value;
+        let descricao= document.getElementById('descricao').value;
+        let valor= document.getElementById('valor').value;
+
+
+        let despesa = new Despesa(ano,mes,dia,tipo,descricao,valor);
+
+        console.log(despesa);
    }

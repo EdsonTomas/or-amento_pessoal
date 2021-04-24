@@ -89,7 +89,33 @@ class Bd{
    }
 
    function carregarListaDespesas(){
-       let despesas = Array();
-       despesas = bd.recuperarTodosRegistros();
-       console.log(despesas);
+        let despesas = Array();
+            despesas = bd.recuperarTodosRegistros();
+        let tbody = document.getElementById('listaDespesas');
+       
+        despesas.forEach(despesa=>{
+            let row = tbody.insertRow(0)
+            row.insertCell(0).innerHTML = `${despesa.dia}-${despesa.mes}-${despesa.ano}`;
+            switch(despesa.tipo){
+                case '1':
+                    despesa.tipo = 'Alimentação';
+                    break;
+                case '2':
+                    despesa.tipo = 'Educação';
+                    break;
+                case '3':
+                    despesa.tipo = 'Lazer';
+                    break;
+                case '4':
+                    despesa.tipo = 'Saúde';
+                    break;
+                case '5':
+                    despesa.tipo = 'Transporte';                
+            }
+            row.insertCell(1).innerHTML = despesa.tipo;
+            row.insertCell(2).innerHTML = despesa.descricao;
+            row.insertCell(3).innerHTML = despesa.valor;
+            console.log(despesa);
+    
+        })
    }

@@ -33,16 +33,21 @@ class Bd{
            localStorage.setItem('id',id);
        }
        recuperarTodosRegistros(){
-           let id = localStorage.getItem('id');
-           let despesas = Array();
-            for(let i = 1; i<=id;i++){
-                if(localStorage.getItem(i) === null){
-                    continue;
-                }
-                despesas.push(JSON.parse(localStorage.getItem(i)));
+          // let id = localStorage.getItem('id');
+           let  despesas = [];
+                let SIZE = this.fazerGet('http://localhost:8080/despesas').responseText.length; 
+    
+            for(let i = 1; i<=SIZE;i++){
+                despesas.push(JSON.parse(this.fazerGet('http://localhost:8080/despesas').responseText));
             }
             return despesas;
        }
+        fazerGet(url){
+            let request = new XMLHttpRequest();
+                request.open('GET',url,false);
+                request.send();
+            return request;
+    }
     }
     let bd = new Bd();
     function registroModal(modalHeader, modalTitle,modalBody,btnModal){
@@ -90,6 +95,7 @@ class Bd{
 
    function carregarListaDespesas(){
         let despesas = Array();
+            despesas = bd.recuperarTodosRegistros();
             despesas = bd.recuperarTodosRegistros();
         let tbody = document.getElementById('listaDespesas');
        
